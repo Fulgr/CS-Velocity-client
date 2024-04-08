@@ -71,7 +71,7 @@ namespace WpfApp1
                             {
                                 chans.Add(s2);
                                 s2 = "";
-                                messagesBox.Text = messagesBox.Text + "\n" + s2;
+                                messagesBox.Text = messagesBox.Text + s2 + "\n";
                             }
                         } 
                         else
@@ -81,6 +81,7 @@ namespace WpfApp1
                         }
                     }
                     channels = chans;
+                    ChannelBoxes.ItemsSource = channels;
                 } else
                 {
                     messagesBox.Text = messagesBox.Text + "\n" + response;
@@ -115,6 +116,12 @@ namespace WpfApp1
             {
                 SendCurrentMsg();
             }
+        }
+
+        private void ChangeChannel(object sender, RoutedEventArgs e)
+        {
+            string content = (sender as Button).Content.ToString();
+            SendMessage("/join " + content);
         }
     }
 }

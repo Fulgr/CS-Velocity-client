@@ -5,12 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Velocity" Height="450" Width="800">
     <Grid>
-        <ScrollViewer MaxHeight="400" Margin="0,0,0,25" x:Name="_scrollviewer">
+        <ListBox x:Name="ChannelBoxes" Width="100" HorizontalAlignment="Left">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding}" Click="ChangeChannel" Width="80" Height="Auto"></Button>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ScrollViewer MaxHeight="400" Margin="100,0,0,25" x:Name="_scrollviewer">
             <TextBlock x:Name="messagesBox" VerticalAlignment="Top" TextWrapping="Wrap"></TextBlock>
         </ScrollViewer>
-        <TextBox VerticalAlignment="Bottom" Height="25" x:Name="CurrentTextBox" Margin="0,0,50,0" KeyDown="CurrentTextBox_KeyDown"></TextBox>
+        <TextBox VerticalAlignment="Bottom" Height="25" x:Name="CurrentTextBox" Margin="100,0,50,0" KeyDown="CurrentTextBox_KeyDown"></TextBox>
         <Button Click="SendCurrentMsgHandle" Height="25" Width="50" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="30">
             <TextBlock TextAlignment="Center" VerticalAlignment="Center">></TextBlock>
         </Button>
